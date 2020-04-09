@@ -14,3 +14,9 @@ Follow this tutorial to set up a simple automated GIT Deployment : [Link](https:
 ### Ports
 
 By default port 80 is use for the app and port 8080 is use for adminer. Don't forget to open them or close them
+
+### Sources
+
+- https://hackernoon.com/a-better-way-to-develop-node-js-with-docker-cd29d3a0093
+- https://knplabs.com/en/blog/how-to-dockerise-a-symfony-4-project
+- https://symfony.com/doc/current/setup/web_server_configuration.html
