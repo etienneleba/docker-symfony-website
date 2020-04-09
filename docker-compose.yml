@@ -5,8 +5,10 @@ services:
     image: mariadb:10.1.44
     restart: on-failure
     environment:
-      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_ROOT_PASSWORD: yes
       MYSQL_DATABASE: ${MYSQL_DATABASE}
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
 
   php:
     build:
@@ -17,7 +19,7 @@ services:
       - ./app:/usr/src/app
     user: ${LOCAL_USER}
     environment:
-      DATABASE_URL: mysql://root:${MYSQL_ROOT_PASSWORD}@db:3306/${MYSQL_DATABASE}?serverVersion=mariadb-10.1.44
+      DATABASE_URL: mysql://${MYSQL_USER}:${MYSQL_PASSWORD}@db:3306/${MYSQL_DATABASE}?serverVersion=mariadb-10.1.44
       APP_ENV: ${ENV}
 
   yarn:
