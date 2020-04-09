@@ -17,6 +17,6 @@ By default port 80 is use for the app and port 8080 is use for adminer. Don't fo
 
 ### Sources
 
-- https://hackernoon.com/a-better-way-to-develop-node-js-with-docker-cd29d3a0093
 - https://knplabs.com/en/blog/how-to-dockerise-a-symfony-4-project
+- https://hackernoon.com/a-better-way-to-develop-node-js-with-docker-cd29d3a0093
 - https://symfony.com/doc/current/setup/web_server_configuration.html
