@@ -4,5 +4,5 @@ This a docker/docker-compose project to handle a symfony 4/5 project with nginx,
 
 ### Starting a new project 
 
-<pre>$ symfony new app</pre>
+<pre>$ symfony --full new app</pre>
 
