@@ -8,7 +8,7 @@ This a docker/docker-compose project to handle a symfony 4/5 project with nginx,
 
 ### Deploy to dev or prod environnement
 
-follow this tutorial to set up a easy deployment : [Link](https://gist.github.com/noelboss/3fe13927025b89757f8fb12e9066f2fa#file-post-receive)
+Follow this tutorial to set up a simple automated GIT Deployment : [Link](https://gist.github.com/noelboss/3fe13927025b89757f8fb12e9066f2fa#file-post-receive)
 
 
 ### Ports
