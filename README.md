@@ -15,8 +15,17 @@ Follow this tutorial to set up a simple automated GIT Deployment : [Link](https:
 
 By default port 80 is use for the app and port 8080 is use for adminer. Don't forget to open them or close them
 
+### Docker ubuntu 18.4
+
+<pre>$ sudo apt-get update && sudo apt-get docker docker-compose</pre>
+<pre>$ sudo chmod 755 -R . </pre>
+
+restart the server
+
 ### Sources
 
 - https://knplabs.com/en/blog/how-to-dockerise-a-symfony-4-project
 - https://hackernoon.com/a-better-way-to-develop-node-js-with-docker-cd29d3a0093
 - https://symfony.com/doc/current/setup/web_server_configuration.html
+
+
