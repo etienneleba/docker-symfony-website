@@ -11,6 +11,7 @@ zlib1g-dev
 RUN docker-php-ext-install zip
 RUN docker-php-ext-enable apcu
 
+# install composer 
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 
 WORKDIR /usr/src/app
