@@ -53,6 +53,10 @@ It depends on your environment, for ubuntu 18.4 see below
 
 <pre>$ make build-project</pre>
 
+##### Build the symfony project
+
+<pre>$ make build-symfony-project</pre>
+
 ##### Launch the project 
 
 <pre>$ make up</pre>
@@ -61,7 +65,6 @@ It depends on your environment, for ubuntu 18.4 see below
 - [Install it](https://symfony.com/doc/current/frontend/encore/installation.html)
 - Add yarn-install and yarn-build to the make command build-project
 
-<br>
 <br>
 
 ### Deploy to a server
@@ -85,10 +88,13 @@ It depends on your environment, for ubuntu 18.4 see below
 
 <pre>$ make deploy-test</pre>
 
+<br>
+
 ### Ports
 
 By default port 80 is use for the app and port 8080 is use for adminer. Don't forget to open them or close them
-<br><br>
+
+<br>
 
 ### Install docker ubuntu 18.4
 
@@ -98,12 +104,34 @@ By default port 80 is use for the app and port 8080 is use for adminer. Don't fo
 
 restart the machine
 
+<br>
+
+### Makefile commands 
+- build-project: build the docker-compose project
+- up : launch the docker-compose project
+- stop : stop the docker-compose project
+- down : remove the docker-compose containers
+- console : "php bin/console" throught the composer container, you can add a command with the "cmd" option
+- schema-update : "php bin/console doctrine:schema:update -f" throught the composer container
+- cache-clear : "php bin/console cache:clear" throught the composer container
+- composer-require : "composer require" throught the composer container, you can add a package with the "req" option
+- composer-install : "composer install" throught the composer container
+- yarn-install : "yarn install" throught the node container
+- yarn-build : "yarn build" throught the node container
+- yarn-watch : "yarn watch" throught the node container, lauch a server which update your assets during dev
+- new-push : this command is used by the git hook : post-receive, to update your project on a server
+- deploy-test : this command push your code on the server, don't forget to change the remote name or create other commands for each remote
+- build-symfony-project : build the symfony project (install, schema update, cache clear)
+
+<br>
+
 ### Sources
 
 - https://knplabs.com/en/blog/how-to-dockerise-a-symfony-4-project
 - https://hackernoon.com/a-better-way-to-develop-node-js-with-docker-cd29d3a0093
 - https://symfony.com/doc/current/setup/web_server_configuration.html
 
+<br>
 
 ### Contribute 
 
