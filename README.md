@@ -1,26 +1,86 @@
 # Docker symfony website
 
-This a docker/docker-compose project to handle a symfony 4/5 project with nginx, php7.2, mariadb and the node container for symfony encore. The make commands allow you to interact and build the project and deploy easily with git.  
+This a docker/docker-compose project to handle a symfony 4/5 website project. The project is based on nginx, php7.2, mariadb. There is alse a node container to handle yarn (for symfony encore) and a composer container to handle composer. The make commands allow you to interact, build and deploy the project easily.  
+<br>
 
 ### Starting a new project 
 
+##### Install docker 
+
+It depends of your environnement, for ubuntu 18.4 see below 
+
+##### Clone this repository 
+
+<pre>$ git clone https://github.com/etienneleba/docker-symfony-website</pre>
+
+##### Rename the project 
+
+<pre>$ mv docker-symfony-website new-project-name</pre>
+
+##### Create the symfony website project : app
+
+<pre>$ cd new-project-name</pre>
 <pre>$ symfony --full new app</pre>
 
-### Deploy to dev or prod environnement
+##### Delete the .git folder in the symfony projet 
 
-Follow this tutorial to set up a simple automated GIT Deployment : [Link](https://gist.github.com/noelboss/3fe13927025b89757f8fb12e9066f2fa#file-post-receive)
+<pre>$ cd app</pre>
+<pre>$ rm -Rf .git</pre>
 
+##### In the root of your project, create the .env for docker-compose from .env.dist
+
+<pre>$ cp .env.dist .env</pre>
+
+##### Change the values
+
+- change the user password
+- change the database name
+- change the ports 
+- check your uid with <pre>$ echo $UID</pre> and put the value for LOCAL_USER
+
+##### Build the project 
+
+<pre>$ make build-project</pre>
+
+##### Launch the project 
+
+<pre>$ make up</pre>
+
+<br>
+<br>
+
+### Deploy to a server
+
+##### On the server
+###### Setup a bare git repository 
+
+  - Follow this tutorial to set up a simple automated GIT Deployment : [Link](https://gist.github.com/noelboss/3fe13927025b89757f8fb12e9066f2fa#file-post-receive)
+
+  - Replace the post-receive script by the one of the project
+
+- Install docker 
+
+
+##### On local
+###### add the bare repository to your local project 
+
+<pre>$ git remote add test ubuntu@your-server:project.git</pre>
+
+###### Deploy to your server
+
+<pre>$ make deploy-test</pre>
 
 ### Ports
 
 By default port 80 is use for the app and port 8080 is use for adminer. Don't forget to open them or close them
+<br><br>
 
-### Docker ubuntu 18.4
+### Intall docker ubuntu 18.4
 
 <pre>$ sudo apt-get update && sudo apt-get docker docker-compose</pre>
 <pre>$ sudo chmod 755 -R . </pre>
 
-restart the server
+restart the machine
 
 ### Sources
 
