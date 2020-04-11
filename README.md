@@ -27,6 +27,17 @@ It depends on your environment, for ubuntu 18.4 see below
 <pre>$ cd app</pre>
 <pre>$ rm -Rf .git</pre>
 
+##### Add the target php version to the composer.json file 
+
+<pre>
+"config": {
+    "platform": {
+      "php": "7.2.5",
+      "ext-something": "1"
+    }
+}
+</pre>
+
 ##### In the root of your project, create the .env for docker-compose from .env.dist
 
 <pre>$ cp .env.dist .env</pre>
