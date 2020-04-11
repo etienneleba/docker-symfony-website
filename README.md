@@ -62,7 +62,7 @@ It depends of your environnement, for ubuntu 18.4 see below
 
 
 ##### On local
-###### add the bare repository to your local project 
+###### Add the bare repository to your local project 
 
 <pre>$ git remote add test ubuntu@your-server:project.git</pre>
 
@@ -75,7 +75,7 @@ It depends of your environnement, for ubuntu 18.4 see below
 By default port 80 is use for the app and port 8080 is use for adminer. Don't forget to open them or close them
 <br><br>
 
-### Intall docker ubuntu 18.4
+### Install docker ubuntu 18.4
 
 <pre>$ sudo apt-get update && sudo apt-get docker docker-compose</pre>
 <pre>$ sudo chmod 755 -R . </pre>
@@ -88,4 +88,10 @@ restart the machine
 - https://hackernoon.com/a-better-way-to-develop-node-js-with-docker-cd29d3a0093
 - https://symfony.com/doc/current/setup/web_server_configuration.html
 
+
+### Contribute 
+
+- add tutorial to install docker/docker-compose on the different environment : red hat, centos...
+- improve the makefile
+- add comments in the dockerfile and makefile
 
