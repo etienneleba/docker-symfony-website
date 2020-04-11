@@ -24,8 +24,11 @@ It depends on your environment, for ubuntu 18.4 see below
 
 ##### Delete the .git folder in the symfony projet 
 
-<pre>$ cd app</pre>
-<pre>$ rm -Rf .git</pre>
+<pre>$ rm -Rf app/.git</pre>
+
+##### Delete the app/.env and replace it, the environment variables are gonna be handled by docker
+
+<pre>$ rm app/.env && touch app/.env</pre>
 
 ##### Add the target php version to the composer.json file 
 
@@ -48,6 +51,8 @@ It depends on your environment, for ubuntu 18.4 see below
 - change the database name
 - change the ports 
 - check your uid (echo $UID to know your uid) and put the value for LOCAL_USER
+- change APP_SECRET
+- check/change the APP_ENV (dev or prod in lowercase)
 
 ##### Build the project 
 
