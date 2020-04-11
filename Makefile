@@ -3,7 +3,7 @@ up:
 down: 
 	docker-compose down
 
-down: 
+stop: 
 	docker-compose stop
 
 cmd?=list
