@@ -1,5 +1,11 @@
+build-project:
+	docker-compose build 
+
+re-build-project: down build-project
+
 up:
 	docker-compose up -d
+
 down: 
 	docker-compose down
 
@@ -23,7 +29,7 @@ composer-install:
 	docker-compose run --rm composer install 
 
 yarn-install:
-	# To be log as the node user on the container and be allowed to use the npm/yarn cache
+	# To be log as the node user on the container and be allowed to use the npm/yarn cache (if you have a better way pls tell me)
 	LOCAL_USER=1000 docker-compose run --rm node yarn install 
 
 yarn-build:
@@ -32,9 +38,15 @@ yarn-build:
 yarn-watch: 
 	docker-compose run --rm node yarn watch
 
-new-push: composer-install schema-update yarn-install yarn-build cache-clear
+new-push: build-project
 
+# Change the name of the remote if you need 
 deploy-test:
 	git push test master
 
-build-project: composer-install schema-update yarn-install yarn-build cache-clear
+# deploy-prod:
+#	git push prod master
+
+#build-symfony-project : composer-install schema-update yarn-install yarn-build cache-clear #if you use symfony encore
+build-symfony-project : composer-install schema-update cache-clear
+
