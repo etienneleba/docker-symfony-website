@@ -37,7 +37,7 @@ It depends on your environment, for ubuntu 18.4 see below
     "platform": {
       "php": "7.2.5",
       "ext-something": "1"
-    }
+    },
 }
 </pre>
 
