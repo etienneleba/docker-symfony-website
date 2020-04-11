@@ -7,7 +7,7 @@ This is a docker/docker-compose project to handle a symfony 4/5 website project.
 
 ##### Install docker 
 
-It depends of your environnement, for ubuntu 18.4 see below 
+It depends on your environment, for ubuntu 18.4 see below 
 
 ##### Clone this repository 
 
