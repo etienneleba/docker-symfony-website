@@ -38,7 +38,8 @@ services:
     image: composer:1.9.3
     restart: "no"
     volumes:
-      - ./app:/app
+      - ./app:/usr/src/app
+    working_dir: /usr/src/app
     user: ${LOCAL_USER}
     environment:
       DATABASE_URL: mysql://${MYSQL_USER}:${MYSQL_PASSWORD}@db:3306/${MYSQL_DATABASE}?serverVersion=mariadb-10.1.44
