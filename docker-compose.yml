@@ -15,21 +15,7 @@ services:
       context: .
       dockerfile: docker/php/Dockerfile
     restart: on-failure
-    volumes:
-      - ./app:/usr/src/app
-    user: ${LOCAL_USER}
-    environment:
-      DATABASE_URL: mysql://${MYSQL_USER}:${MYSQL_PASSWORD}@db:3306/${MYSQL_DATABASE}?serverVersion=mariadb-10.1.44
-      APP_ENV: ${ENV}
-
-  yarn:
-    image: node:10
-    volumes:
-      - ./app:/usr/src/app
-    working_dir: /usr/src/app
-    user: ${LOCAL_USER}
-    stdin_open: true
-
+    
   adminer:
     image: adminer
     restart: on-failure
@@ -46,3 +32,23 @@ services:
       - ${NGINX_PORT}:80
     depends_on:
       - php
+
+  # Utils
+  composer:
+    image: composer:1.9.3
+    restart: "no"
+    volumes:
+      - ./app:/app
+    user: ${LOCAL_USER}
+    environment:
+      DATABASE_URL: mysql://${MYSQL_USER}:${MYSQL_PASSWORD}@db:3306/${MYSQL_DATABASE}?serverVersion=mariadb-10.1.44
+      APP_ENV: ${ENV}
+
+  node:
+    image: node:10
+    volumes:
+      - ./app:/home/node/app
+    working_dir: /home/node/app
+    user: ${LOCAL_USER}
+
+  
