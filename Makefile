@@ -23,13 +23,14 @@ composer-install:
 	docker-compose run --rm composer install 
 
 yarn-install:
-	LOCAL_USER=1000 docker-compose run --rm yarn yarn install 
+	# To be log as the node user on the container and be allowed to use the npm/yarn cache
+	LOCAL_USER=1000 docker-compose run --rm node yarn install 
 
 yarn-build:
-	docker-compose run --rm yarn yarn build
+	docker-compose run --rm node yarn build
 
 yarn-watch: 
-	docker-compose run --rm yarn yarn watch
+	docker-compose run --rm node yarn watch
 
 new-push: composer-install schema-update yarn-install yarn-build cache-clear
 
