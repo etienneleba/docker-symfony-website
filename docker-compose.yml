@@ -43,7 +43,8 @@ services:
     user: ${LOCAL_USER}
     environment:
       DATABASE_URL: mysql://${MYSQL_USER}:${MYSQL_PASSWORD}@db:3306/${MYSQL_DATABASE}?serverVersion=mariadb-10.1.44
-      APP_ENV: ${ENV}
+      APP_ENV: ${APP_ENV}
+      APP_SECRET: ${APP_SECRET}
 
   node:
     image: node:10
