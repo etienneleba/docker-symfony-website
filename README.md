@@ -11,7 +11,7 @@ It depends on your environment, for ubuntu 18.4 see below
 
 ##### Clone this repository 
 
-<pre>$ git clone https://github.com/etienneleba/docker-symfony-website</pre>
+<pre>$ git clone https://github.com/etienneleba/docker-symfony-website.git</pre>
 
 ##### Rename the project 
 
@@ -20,7 +20,7 @@ It depends on your environment, for ubuntu 18.4 see below
 ##### Create the symfony website project : app
 
 <pre>$ cd new-project-name</pre>
-<pre>$ symfony --full new app</pre>
+<pre>$ symfony new --full app</pre>
 
 ##### Delete the .git folder in the symfony projet 
 
@@ -31,12 +31,12 @@ It depends on your environment, for ubuntu 18.4 see below
 
 <pre>$ cp .env.dist .env</pre>
 
-##### Change the values
+##### Change the values of the .env
 
 - change the user password
 - change the database name
 - change the ports 
-- check your uid with <pre>$ echo $UID</pre> and put the value for LOCAL_USER
+- check your uid (echo $UID to know your uid) and put the value for LOCAL_USER
 
 ##### Build the project 
 
