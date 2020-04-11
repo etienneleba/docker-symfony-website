@@ -57,6 +57,10 @@ It depends on your environment, for ubuntu 18.4 see below
 
 <pre>$ make up</pre>
 
+##### Handle symfony encore
+- [Install it](https://symfony.com/doc/current/frontend/encore/installation.html)
+- Add yarn-install and yarn-build to the make command build-project
+
 <br>
 <br>
 
