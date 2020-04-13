@@ -14,13 +14,13 @@ stop:
 
 cmd?=list
 console: 
-	docker-compose run --rm composer php bin/console $(cmd)
+	docker-compose run --rm php php bin/console $(cmd)
 
 schema-update:
-	docker-compose run --rm composer php bin/console doctrine:schema:update -f 
+	docker-compose run --rm php php bin/console doctrine:schema:update -f 
 
 cache-clear:
-	docker-compose run --rm composer php bin/console cache:clear 
+	docker-compose run --rm php php bin/console cache:clear 
 
 composer-require:
 	docker-compose run --rm composer require $(req)
