@@ -103,7 +103,7 @@ By default port 80 is use for the app and port 8080 is use for adminer. Don't fo
 
 ### Install docker ubuntu 18.4
 
-<pre>$ sudo apt-get update && sudo apt-get docker docker-compose</pre>
+<pre>$ sudo apt-get update && sudo apt-get install docker docker-compose</pre>
 <pre>$ sudo usermod -aG docker $USER</pre>
 <pre>$ sudo chmod 755 -R . </pre>
 
