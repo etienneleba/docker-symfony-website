@@ -9,6 +9,8 @@ services:
       MYSQL_DATABASE: ${MYSQL_DATABASE}
       MYSQL_USER: ${MYSQL_USER}
       MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+    volumes:
+      - ./data:/var/lib/mysql
 
   php:
     build:
@@ -16,15 +18,14 @@ services:
       dockerfile: docker/php/Dockerfile
     restart: on-failure
     environment:
-      DATABASE_URL: mysql://${MYSQL_USER}:${MYSQL_PASSWORD}@db:3306/${MYSQL_DATABASE}?serverVersion=mariadb-10.1.44
       APP_ENV: ${APP_ENV}
-      APP_SECRET: ${APP_SECRET}
-    
-  adminer:
-    image: adminer
-    restart: on-failure
-    ports:
-      - ${ADMINER_PORT}:8080
+    volumes:
+      - .:/usr/src/
+      - ./docker/php/custom.ini:/usr/local/etc/php/conf.d/custom.ini
+    depends_on:
+      - db
+    working_dir: /usr/src
+    user: ${LOCAL_USER}
 
   nginx:
     image: nginx:1.15.3-alpine
@@ -38,23 +39,15 @@ services:
       - php
 
   # Utils
-  composer:
-    image: composer:1.9.3
-    restart: "no"
-    volumes:
-      - ./app:/usr/src/app
-    working_dir: /usr/src/app
-    user: ${LOCAL_USER}
-    environment:
-      DATABASE_URL: mysql://${MYSQL_USER}:${MYSQL_PASSWORD}@db:3306/${MYSQL_DATABASE}?serverVersion=mariadb-10.1.44
-      APP_ENV: ${APP_ENV}
-      APP_SECRET: ${APP_SECRET}
+  adminer:
+    image: adminer
+    restart: on-failure
+    ports:
+      - ${ADMINER_PORT}:8080
 
   node:
     image: node:10
     volumes:
-      - ./app:/home/node/app
+      - .:/home/node/app
     working_dir: /home/node/app
     user: ${LOCAL_USER}
-
-  
