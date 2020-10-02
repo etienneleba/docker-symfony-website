@@ -2,6 +2,7 @@
 
 This is a docker/docker-compose project to handle a symfony 4/5 website project. The project is based on nginx, php7.4, mariadb. There are also a node container to handle yarn (for symfony encore). The make commands allow you to interact, build and deploy the project easily.  
 <br>
+This template is also available with letsencrypt, just see the php7.4-letsencrypt branch
 
 ### Starting a new project
 
