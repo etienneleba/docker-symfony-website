@@ -48,6 +48,12 @@ Example :
 
 ##### Launch the project
 
+The first time, up only the php container to install symfony :
+
+<pre>$ docker-compose up php</pre>
+
+After the installation, stop the php container and launch all the containers.
+
 <pre>$ make up</pre>
 
 ##### Handle symfony encore
