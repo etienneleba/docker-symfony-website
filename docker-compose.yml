@@ -25,7 +25,6 @@ services:
     depends_on:
       - db
     working_dir: /usr/src
-    user: ${LOCAL_USER}
 
   nginx:
     image: nginx:1.15.3-alpine

@@ -1,6 +1,6 @@
 # Docker symfony website
 
-This is a docker/docker-compose project to handle a symfony 4/5 website project. The project is based on nginx, php7.2, mariadb. There are also a node container to handle yarn (for symfony encore) and a composer container to handle composer. The make commands allow you to interact, build and deploy the project easily.  
+This is a docker/docker-compose project to handle a symfony 4/5 website project. The project is based on nginx, php7.4, mariadb. There are also a node container to handle yarn (for symfony encore). The make commands allow you to interact, build and deploy the project easily.  
 <br>
 
 ### Starting a new project
