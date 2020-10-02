@@ -15,3 +15,7 @@
 ###> data ###
 /data/*
 ###> data ###
+
+###> certbot ###
+/docker/certbot
+###> certbot ###

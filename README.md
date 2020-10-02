@@ -89,7 +89,17 @@ After the installation, stop the php container and launch all the containers.
 
 ### Create production project
 
-On the production server, add the ssl certificates inside the /docker/nginx/certs folder. Replace the filenames of the certificates in the prod.conf file and launch :
+Refer to this tutorial to manage docker/nginx/certbot : https://medium.com/@pentacent/nginx-and-lets-encrypt-with-docker-in-less-than-5-minutes-b4b8a60d3a71
+
+Replace in docker/nginx/prod.conf and init-letsencrypt.sh all "example.org" by your own domain.
+
+Launch init-letsencrypt.sh :
+
+<pre>
+$ chmod +x ./init-letsencrypt.sh && ./init-letsencrypt.sh
+</pre>
+
+If everything went well, open 80 and 443 on the serveur and launch the app to prod :
 
 ```
 $ make to-prod
