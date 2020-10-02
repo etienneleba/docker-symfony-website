@@ -26,8 +26,8 @@ RUN set -eux; \
 	    intl \
 	    zip \
         pdo \
-        mysqli
-        pdo_mysql
+        mysqli \
+        pdo_mysql \
 	; \
 	pecl install \
 	    apcu-${APCU_VERSION} \
