@@ -13,18 +13,6 @@ It depends on your environment, for ubuntu 18.4 see below
 
 <pre>$ git clone https://github.com/etienneleba/docker-symfony-website.git new-project-name</pre>
 
-##### Create the symfony website project : app
-
-<pre>$ cd new-project-name</pre>
-
-Symfony skeleton
-
-<pre>$ composer create-project symfony/skeleton .</pre>
-
-Symfony website skeleton
-
-<pre>$ composer create-project symfony/website-skeleton .</pre>
-
 ##### In the root of your project, create the .env for docker-compose from .env.dist
 
 <pre>$ cp .env.dist .env</pre>
@@ -48,13 +36,15 @@ Symfony website skeleton
 - change APP_SECRET
 - check/change the APP_ENV (dev or prod in lowercase)
 
-##### Build the project
+##### Choose the symfony version
 
-<pre>$ make build-project</pre>
+In the docker-compose.yml, update the line :
 
-##### Build the symfony project
+<pre>SYMFONY_VERSION: ${SYMFONY_VERSION:-}</pre>
 
-<pre>$ make build-symfony-project</pre>
+Example :
+
+<pre>SYMFONY_VERSION: ${SYMFONY_VERSION:-5.*}</pre>
 
 ##### Launch the project
 
@@ -93,7 +83,7 @@ Symfony website skeleton
 
 ### Create production project
 
-On the production server, insite the project :
+On the production server, add the ssl certificates inside the /docker/nginx/certs folder. Replace the filenames of the certificates in the prod.conf file and launch :
 
 ```
 $ make to-prod
@@ -101,7 +91,7 @@ $ make to-prod
 
 ### Ports
 
-By default port 80 is use for the app and port 8080 is use for adminer. Don't forget to open them or close them
+By default port 80 is use for the app and port 8080 is use for adminer. Don't forget to open them or close them on the server.
 
 <br>
 
@@ -146,6 +136,7 @@ restart the machine
 - https://knplabs.com/en/blog/how-to-dockerise-a-symfony-4-project
 - https://hackernoon.com/a-better-way-to-develop-node-js-with-docker-cd29d3a0093
 - https://symfony.com/doc/current/setup/web_server_configuration.html
+- https://github.com/dunglas/symfony-docker
 
 <br>
 

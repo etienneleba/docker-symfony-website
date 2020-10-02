@@ -1,3 +1,5 @@
+# https://github.com/dunglas/symfony-docker
+
 ARG PHP_VERSION=7.4
 
 FROM php:${PHP_VERSION}-fpm-alpine AS symfony_php

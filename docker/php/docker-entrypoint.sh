@@ -1,4 +1,5 @@
 #!/bin/sh
+# from https://github.com/dunglas/symfony-docker
 set -e
 
 # first arg is `-f` or `--some-option`
