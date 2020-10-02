@@ -11,11 +11,7 @@ It depends on your environment, for ubuntu 18.4 see below
 
 ##### Clone this repository
 
-<pre>$ git clone https://github.com/etienneleba/docker-symfony-website.git</pre>
-
-##### Rename the project
-
-<pre>$ mv docker-symfony-website new-project-name</pre>
+<pre>$ git clone https://github.com/etienneleba/docker-symfony-website.git new-project-name</pre>
 
 ##### Create the symfony website project : app
 
