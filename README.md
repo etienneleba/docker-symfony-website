@@ -2,6 +2,7 @@
 
 This is a docker/docker-compose project to handle a symfony 4/5 website project. The project is based on nginx, php7.4, mariadb. There are also a node container to handle yarn (for symfony encore). The make commands allow you to interact, build and deploy the project easily.  
 <br>
+This template is also available with letsencrypt, just see the php7.4-letsencrypt branch.
 
 ### Starting a new project
 
@@ -103,6 +104,61 @@ If everything went well, open 80 and 443 on the serveur and launch the app to pr
 
 ```
 $ make to-prod
+```
+
+### Create maintenance mode
+
+Require the corley maintenance bundle
+
+```
+$ make composer-require req=corley/maintenance-bundle
+```
+
+Create a corley.yaml config file with these lines :
+
+```yaml
+corley_maintenance:
+  page: "%kernel.project_dir%/templates/maintenance.html"
+  hard_lock: hard.html
+  symlink: false
+```
+
+Create the maintenance.html file in the templates folder, this will be the maintenance page.
+
+Dump the nginx config and add it to your nginx config the default one and the prod :
+
+```
+$ make console cmd=corley:maintenance:dump-nginx
+```
+
+It's all good, now you can lock or unlock your app. <br>  
+Hard mode
+
+```
+$ make console cmd="corley:maintenance:lock on"
+$ make console cmd="corley:maintenance:lock off"
+```
+
+Soft mode
+
+```
+$ make console cmd="corley:maintenance:soft-lock on"
+$ make console cmd="corley:maintenance:soft-lock off"
+```
+
+Add these lines in the makefile to manage the maintenance mode more easily :
+
+```
+maintenance-soft-on:
+	docker-compose run --rm php php bin/console corley:maintenance:soft-lock on
+maintenance-soft-off:
+	docker-compose run --rm php php bin/console corley:maintenance:soft-lock off
+maintenance-hard-on:
+	docker-compose run --rm php php bin/console corley:maintenance:lock on
+maintenance-hard-off:
+	docker-compose run --rm php php bin/console corley:maintenance:lock off
+nginx-reload:
+	docker-compose exec nginx nginx -s reload
 ```
 
 ### Ports
