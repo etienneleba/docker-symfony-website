@@ -9,9 +9,6 @@
 /vendor/
 ###< symfony/framework-bundle ###
 
-###> docker-compose ###
-/.env
-
 ###> data ###
 /data/*
 ###> data ###
