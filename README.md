@@ -13,29 +13,11 @@ It depends on your environment, for ubuntu 18.4 see below
 ##### Clone this repository
 
 <pre>$ git clone https://github.com/etienneleba/docker-symfony-website.git new-project-name</pre>
+##### Create local files
 
-##### In the root of your project, create the .env for docker-compose from .env.dist
-
-<pre>$ cp .env.dist .env</pre>
-
-##### Change the values of the .env
-
-- change the user password
-- change the database name
-- change the ports
-- check your uid (echo \$UID to know your uid) and put the value for LOCAL_USER
-- change APP_SECRET
-- check/change the APP_ENV (dev or prod in lowercase)
-
-##### In the root of your project, create the .env.local for symfony from .env.local.dist
-
-<pre>$ cp .env.local.dist .env.local</pre>
-
-##### Change the values of the .env
-
-- change the database url
-- change APP_SECRET
-- check/change the APP_ENV (dev or prod in lowercase)
+- Create a .env.dev/.env.prod to store the env variables for the right environment
+- Create a .env.local to store secrets
+- Create a docker-compose.override.yml to set the ports
 
 ##### Choose the symfony version
 
@@ -46,6 +28,9 @@ In the docker-compose.yml, update the line :
 Example :
 
 <pre>SYMFONY_VERSION: ${SYMFONY_VERSION:-5.*}</pre>
+
+##### Set the mysql user password
+In the docker-compose.yml : `MYSQL_PASSWORD:` 
 
 ##### Launch the project
 
