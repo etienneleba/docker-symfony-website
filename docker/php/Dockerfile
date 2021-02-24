@@ -50,10 +50,12 @@ RUN set -eux; \
 	\
 	apk del .build-deps
 
+# ! fix composer version
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
 # https://getcomposer.org/doc/03-cli.md#composer-allow-superuser
 ENV COMPOSER_ALLOW_SUPERUSER=1
+
 # install Symfony Flex globally to speed up download of Composer packages (parallelized prefetching)
 RUN set -eux; \
 	composer global require "symfony/flex" --prefer-dist --no-progress --no-suggest --classmap-authoritative; \
@@ -71,6 +73,10 @@ ENV STABILITY ${STABILITY:-stable}
 
 # Allow to select skeleton version
 ARG SYMFONY_VERSION=""
+
+# Create new user, same id as the host user to avoid permissions issues
+RUN addgroup -S $GROUP_ID && adduser -S -G $USER_ID $GROUP_ID
+USER $USER_ID
 
 COPY . .
 
