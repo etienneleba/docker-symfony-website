@@ -74,10 +74,6 @@ ENV STABILITY ${STABILITY:-stable}
 # Allow to select skeleton version
 ARG SYMFONY_VERSION=""
 
-# Create new user, same id as the host user to avoid permissions issues
-RUN addgroup -S $GROUP_ID && adduser -S -G $USER_ID $GROUP_ID
-USER $USER_ID
-
 COPY . .
 
 COPY docker/php/docker-entrypoint.sh /usr/local/bin/docker-entrypoint
