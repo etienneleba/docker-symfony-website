@@ -6,7 +6,7 @@ services:
     restart: on-failure
 
   node:
-    image: node:10
+    image: node:16
     volumes:
       - .:/home/node/app
     working_dir: /home/node/app
