@@ -36,9 +36,6 @@ if [ "$1" = 'php-fpm' ]; then
       composer install --prefer-dist --no-progress --no-suggest --no-interaction
   fi
 
-	setfacl -R -m u:www-data:rwX -m u:"$(whoami)":rwX var
-	setfacl -dR -m u:www-data:rwX -m u:"$(whoami)":rwX var
-
 fi
 
 if [ "$1" = 'sh' ] || [ "$1" = 'bin/console' ] || [ "$1" = 'composer' ] || [ "$1" = 'php' ]; then
