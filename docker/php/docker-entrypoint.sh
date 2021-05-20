@@ -2,10 +2,8 @@
 # from https://github.com/dunglas/symfony-docker
 set -e
 
-# first arg is `-f` or `--some-option`
-if [ "${1#-}" != "$1" ]; then
-	set -- php-fpm "$@"
-fi
+# Change www-data's uid & guid to be the same as directory in host
+sed -ie "s/`id -u www-data`:`id -g www-data`/`stat -c %u /usr/src/.env`:`stat -c %g /usr/src/.env`/g" /etc/passwd
 
 if [ "$1" = 'php-fpm' ] || [ "$1" = 'php' ] || [ "$1" = 'bin/console' ] || [ "$1" = 'composer' ]; then
 	PHP_INI_RECOMMENDED="$PHP_INI_DIR/php.ini-production"
@@ -18,13 +16,14 @@ if [ "$1" = 'php-fpm' ] || [ "$1" = 'php' ] || [ "$1" = 'bin/console' ] || [ "$1
 
   # The first time volumes are mounted, the project needs to be recreated
   if [ ! -f composer.json ]; then
-      composer create-project "symfony/skeleton $SYMFONY_VERSION" tmp --stability=$STABILITY --prefer-dist --no-progress --no-interaction
+      composer create-project "symfony/skeleton 5.*" tmp --prefer-dist --no-progress --no-interaction
       jq '.extra.symfony.docker=true' tmp/composer.json > tmp/composer.tmp.json
       rm tmp/composer.json
       mv tmp/composer.tmp.json tmp/composer.json
       rm tmp/.gitignore
       rm tmp/.env
 
+      chown -Rf www-data:www-data ./tmp
       cp -Rp tmp/. .
       rm -Rf tmp/
   elif [ "$APP_ENV" != 'prod' ]; then
@@ -36,4 +35,5 @@ if [ "$1" = 'php-fpm' ] || [ "$1" = 'php' ] || [ "$1" = 'bin/console' ] || [ "$1
 	setfacl -dR -m u:www-data:rwX -m u:"$(whoami)":rwX var
 fi
 
-exec docker-php-entrypoint "$@"
+# Change to user www-data
+su www-data -s /bin/sh -c "$*"
