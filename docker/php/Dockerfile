@@ -67,10 +67,6 @@ WORKDIR /usr/src
 # build for production
 ARG APP_ENV=prod
 
-# Allow to use development versions of Symfony
-ARG STABILITY="stable"
-ENV STABILITY ${STABILITY:-stable}
-
 # Allow to select skeleton version
 ARG SYMFONY_VERSION=""
 
